@@ -1,0 +1,94 @@
+1)
+function calculate_age(dob)
+ { 
+    var diff_ms = Date.now() - dob.getTime();
+    var age_dt = new Date(diff_ms); 
+  
+    return Math.abs(age_dt.getUTCFullYear() - 1970);
+ }
+
+console.log(calculate_age(new Date(1982, 11, 4)));
+
+console.log(calculate_age(new Date(1962, 1, 1)));
+
+2)
+Array.prototype.merge_Sort = function ()
+{
+  if (this.length <= 1) 
+  {
+    return this;
+  }
+
+  var half = parseInt(this.length / 2);
+  var left = this.slice(0, half).merge_Sort();
+  var right = this.slice(half,     this.length).merge_Sort();
+  var merge = function (left, right) 
+  {
+  var arry = [];
+  while (left.length > 0 && right.length > 0)
+  {
+    arry.push((left[0] <= right[0]) ? left.shift() : right.shift());
+  }
+    return arry.concat(left).concat(right);
+  };
+
+  return merge(left, right);
+};
+
+var a = [34,7,23,32,5,62];
+console.log(a.merge_Sort());
+
+3)
+var a = 2154; 
+var b = 458;  
+var gcd;
+while (a!=b)
+{
+	if (a>b)
+	{
+		a = a -b;
+	}
+	else
+	{
+		b = b - a;
+	}
+}
+gcd = a;
+console.log(gcd);
+
+4)
+var last =  function(array, n)
+{
+  if (array == null) 
+    return void 0;
+  if (n == null) 
+     return array[array.length - 1];
+  return array.slice(Math.max(array.length - n, 0));  
+};
+
+console.log(last([7, 9, 0, -2]));
+console.log(last([7, 9, 0, -2],3));
+console.log(last([7, 9, 0, -2],6));
+
+5)
+
+function removeDuplicates(num) {
+  var x,
+      len=num.length,
+      out=[],
+      obj={};
+ 
+  for (x=0; x<len; x++) {
+    obj[num[x]]=0;
+  }
+  for (x in obj) {
+    out.push(x);
+  }
+  return out;
+}
+var Mynum = [1, 2, 2, 4, 5, 4, 7, 8, 7, 3, 6];
+result = removeDuplicates(Mynum);
+console.log(Mynum);
+console.log(result);
+
+
